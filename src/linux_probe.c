@@ -1,5 +1,7 @@
 #include "fragile_baby/platform.h"
 
+#include <stddef.h>
+
 #if defined(__linux__) && defined(__e2k__)
 #include <stdio.h>
 #include <string.h>
