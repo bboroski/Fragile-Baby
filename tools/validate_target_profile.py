@@ -103,7 +103,7 @@ def validate_profile(document: Any) -> dict[str, Any]:
     ):
         raise ProfileError("abi.pointer_width_bits must be null or a byte-aligned integer from 16 to 128")
     endianness = abi["endianness"]
-    if endianness is not None and endianness not in {"little", "big"}:
+    if endianness is not None and (not isinstance(endianness, str) or endianness not in {"little", "big"}):
         raise ProfileError("abi.endianness must be null, little, or big")
     calling = _optional_text(abi["calling_convention"], "abi.calling_convention", 256)
     alignment = abi["stack_alignment_bytes"]
