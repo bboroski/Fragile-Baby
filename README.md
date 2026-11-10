@@ -1,25 +1,21 @@
 # Fragile-Baby
 
-**Портативний шар сумісності системного ПЗ та обчислювальних моделей.**
+**Status:** project placeholder and integration-reference scaffold.
 
-[Українська](README.md) · [English](README.en.md) · [Русский](README.ru.md)
+The repository currently contains no product implementation, public API, build system, supported hardware target, or test suite. Its intended product role still needs to be defined; this README deliberately does not invent one.
 
-## Поточний стан
+## Cross-project domain references
 
-Fragile-Baby залишається початковим каркасом. У репозиторії поки немає реалізованого runtime, компілятора, BSP, завантажувача чи підтвердженої підтримки процесорів. Документація визначає перевірювані межі майбутньої реалізації й не подає плани як готовий код.
+- [Reaper-inspired engineering integration notes](docs/REAPER_DOMAIN_INTEGRATION.md)
+- [Canonical 50-pattern engineering catalogue in SAMBU](https://github.com/bboroski/SAMBU/blob/main/data/reaper/engineering_patterns_50.tsv)
+- [Academic biology glossary in SAMBU](https://github.com/bboroski/SAMBU/blob/main/data/biology/academic_terms_500.tsv)
 
-## Reaper cycle
+These references are passive documentation and research vocabulary only. They do not imply that Fragile-Baby implements a runtime, biological model, AI system, hardware controller, or Mass Effect technology.
 
-[Контракт сумісності](docs/architecture/reaper-cycle-compatibility.md) описує майбутнє підключення до детермінованої моделі ReaperCripple: 64-бітні стани, явний seed і не більше 6666 логічних ітерацій.
+## Promotion gate
 
-## Пріоритети
+Before implementation, define the repository owner role, supported platforms, public interfaces, threat model, build/test strategy, licensing requirements, and dependency direction. Only then should executable code or ecosystem capabilities be introduced. Any future integration must be versioned, independently testable, and reversible.
 
-- Розділяти ISA, ABI, компілятор, можливості платформи та модель даних.
-- Не заявляти підтримку x86-64, Ельбрус/E2K, Arm або RISC-V без відповідного компілятора й цільової перевірки.
-- Зберігати переносиму основу C11 і типи фіксованої ширини.
-- Додати збірку, host-тести та відтворювані еталонні вектори до апаратної інтеграції.
-- Порівнювати результати з еталонною моделлю ReaperCripple.
+## Примітка щодо сумісності Reaper cycle
 
-## Важливе обмеження
-
-64-бітна модель даних не створює 666-бітних регістрів і не доводить підтримку процесорної архітектури. Host-емуляція підтверджує лише програмні інваріанти, але не роботу на фізичному обладнанні.
+[Контракт сумісності](docs/architecture/reaper-cycle-compatibility.md) описує потенційну точку інтеграції з детермінованою 64-бітною моделлю ReaperCripple. Це лише пропозиція для майбутньої перевірки: вона не визначає продуктову роль Fragile-Baby, не оголошує підтримку процесорів і не означає наявність runtime, компілятора, BSP чи завантажувача.
