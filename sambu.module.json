@@ -1,0 +1,46 @@
+{
+  "module_id": "fragile-baby-elbrus-platform",
+  "repository": "bboroski/Fragile-Baby",
+  "display_name": "Fragile-Baby",
+  "version": "0.1.0",
+  "role": "elbrus-e2k-linux-platform-support",
+  "runtime": ["C11", "Linux userspace", "CMake", "MCST LCC toolchain"],
+  "maturity": "initial-platform-core-target-validation-pending",
+  "provides": [
+    "e2k-target-detection",
+    "e2k-generation-profile",
+    "lcc-aware-cmake-toolchain",
+    "linux-platform-metadata-probe",
+    "host-testable-platform-abi",
+    "target-smoke-test"
+  ],
+  "consumes": [
+    "verified-mcst-lcc-compiler",
+    "matching-e2k-sysroot-and-runtime",
+    "exact-target-generation-profile"
+  ],
+  "dependencies": [
+    {"module_id": "kloz-platform", "relation": "optional-adapter", "status": "planned", "scope": "Use Kloz's versioned platform operations; userspace provides only capabilities it can safely implement."},
+    {"module_id": "co-lifecycle", "relation": "optional-adapter", "status": "planned", "scope": "Compose application-owned lifecycle callbacks without turning CO into a scheduler."},
+    {"module_id": "saintsi-assurance", "relation": "optional-adapter", "status": "planned", "scope": "Feed bounded health observations from completed service work; no automatic reset authority."},
+    {"module_id": "reapercripple-hardware", "relation": "optional-adapter", "status": "planned", "scope": "Requires an upstream ARCH_TARGET_ELBRUS enum and a reviewed E2K BSP before hardware telemetry integration."},
+    {"module_id": "sambu-core", "relation": "policy-port", "status": "planned", "scope": "Consume versioned build and capability descriptions; production E2K code generation remains with MCST LCC."},
+    {"module_id": "toolng-diagnostics", "relation": "optional-adapter", "status": "planned", "scope": "Potential read-only target/build evidence report; the Windows GUI is not part of the E2K runtime."},
+    {"module_id": "klipot-control-plane", "relation": "metadata-projection", "status": "planned", "scope": "Project the manifest and target-validation evidence into the ecosystem registry."}
+  ],
+  "boundaries": [
+    "A host build does not prove E2K compiler, ABI, sysroot, runtime or hardware compatibility.",
+    "Only a compiler that defines __e2k__ may be used by the E2K toolchain file.",
+    "No undocumented CPU-generation macros, ISA flags, privileged registers, MMIO, voltage or clock controls are assumed.",
+    "PMU, cache, thermal and supply measurements require separately validated OS or board providers.",
+    "ReaperCripple does not yet expose ARCH_TARGET_ELBRUS; its adapter remains planned.",
+    "SAMBU's native compiler backend is experimental and is not claimed to generate E2K machine code."
+  ],
+  "verification": {
+    "host_tests": "Run python one.py test or CMake/CTest with GCC or Clang.",
+    "target_validation": "Pending MCST LCC configure/build, QEMU-e2k or native execution, and per-model hardware validation.",
+    "evidence": ["README.md", "docs/PROCESSORS.md", "docs/TOOLCHAIN.md", "docs/INTEGRATION.md"]
+  },
+  "schema_version": 1,
+  "ecosystem": "SAMBU"
+}

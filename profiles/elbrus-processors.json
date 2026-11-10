@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "architecture_family": "e2k",
+  "source": {
+    "mcst_linux_support": "https://www.mcst.ru/elbrus_linux",
+    "processor_identifiers": "https://wiki.elbrus.ru/CPU_id"
+  },
+  "generations": [
+    {"id": "e2k-v1", "generation": 1, "processors": ["Elbrus"], "status": "legacy"},
+    {"id": "e2k-v2", "generation": 2, "processors": ["Elbrus-S", "Elbrus-2C+"], "status": "legacy"},
+    {"id": "e2k-v3", "generation": 3, "processors": ["Elbrus-4C"], "status": "legacy"},
+    {"id": "e2k-v4", "generation": 4, "processors": ["Elbrus-8C", "Elbrus-1C+", "Elbrus-1CK"], "status": "documented"},
+    {"id": "e2k-v5", "generation": 5, "processors": ["Elbrus-8SV"], "status": "documented"},
+    {"id": "e2k-v6", "generation": 6, "processors": ["Elbrus-16C", "Elbrus-12C", "Elbrus-2C3"], "status": "documented"},
+    {"id": "e2k-v7", "generation": 7, "processors": ["Elbrus-48C", "Elbrus-8V7"], "status": "documented"}
+  ],
+  "policy": {
+    "unknown_generation_is_allowed": true,
+    "infer_generation_from_model_string": false,
+    "infer_capabilities_from_generation_only": false,
+    "require_exact_toolchain_and_os_validation": true
+  }
+}
