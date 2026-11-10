@@ -1,8 +1,10 @@
 # Fragile-Baby
 
-**Status:** project placeholder and integration-reference scaffold.
+**Role:** Elbrus target-profile and toolchain-validation workbench.
 
-The repository currently contains no product implementation, public API, build system, supported hardware target, or test suite. Its intended product role still needs to be defined; this README deliberately does not invent one.
+The repository provides a configurable Elbrus target profile, metadata validator, and safe compiler-argument builder. Compiler commands, target triples, ABI facts, flags, and hardware evidence must be supplied for the exact toolchain and target; none are guessed or marked verified by default. The project does not yet provide native Elbrus drivers or a certified processor port.
+
+Run `python tools/validate_target_profile.py` and `python -m unittest discover -s tests` to validate the profile tooling.
 
 ## Cross-project domain references
 
