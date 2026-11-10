@@ -1,8 +1,10 @@
 # Fragile-Baby
 
-**Status:** project placeholder and integration-reference scaffold.
+**Status:** architecture proposal and integration-reference scaffold; no verified target implementation.
 
-The repository currently contains no product implementation, public API, build system, supported hardware target, or test suite. Its intended product role still needs to be defined; this README deliberately does not invent one.
+**Proposed product role:** Elbrus CPU architecture and platform-support workstream. The initial scope is to establish target-specific ABI/toolchain profiles, image and memory-map validation, linker-layout checks, and a reproducible qualification matrix. No Elbrus CPU model or board is declared supported until exact compiler, linker, emulator, and/or physical-target evidence is recorded.
+
+The repository currently has no verified Elbrus boot path or hardware qualification. Host-side checks and architecture documents must remain separate from cross-build, emulator, and physical-device results.
 
 ## Cross-project domain references
 
