@@ -9,14 +9,14 @@ Fragile-Baby treats the E2K instruction-set generation, the physical processor m
 | e2k-v1 | Elbrus (first generation) | Legacy target; verify the exact compiler and OS package set |
 | e2k-v2 | Elbrus-S, Elbrus-2C+ | Legacy target; verify the exact compiler and OS package set |
 | e2k-v3 | Elbrus-4C | Use an SDK and OS release that explicitly supports v3 |
-| e2k-v4 | Elbrus-8C, Elbrus-1C+, Elbrus-1CK | Use an SDK and OS release that explicitly supports v4 |
+| e2k-v4 | Elbrus-8C, Elbrus-8C1, Elbrus-1C+, Elbrus-1CK / 1Csk | Use an SDK and OS release that explicitly supports v4 |
 | e2k-v5 | Elbrus-8SV | Use an SDK and OS release that explicitly supports v5 |
-| e2k-v6 | Elbrus-16C, Elbrus-12C, Elbrus-2C3 | Use an SDK and OS release that explicitly supports v6 |
+| e2k-v6 | Elbrus-16C, Elbrus-12C, Elbrus-2S3 (also written 2C3) | Use an SDK and OS release that explicitly supports v6 |
 | e2k-v7 | Elbrus-48C, Elbrus-8V7 | Use an SDK and OS release that explicitly supports v7 |
 
 Sources: [MCST Elbrus Linux supported processor table](https://www.mcst.ru/elbrus_linux), [Elbrus processor identifiers](https://wiki.elbrus.ru/CPU_id).
 
-The MCST OS page lists e2k-v7 for Elbrus-48C/8V7, v6 for 16C/12C/2C3, v5 for 8SV, v4 for 8C/1C+/1CK and v3 for 4C. It also lists the OS release ranges associated with those architecture families. These entries are a vendor compatibility reference, not a guarantee that a particular SDK, driver, firmware or package repository is available to every user.
+The MCST OS page lists e2k-v7 for Elbrus-48C/8V7, v6 for 16C/12C/2S3 (2C3 alias), v5 for 8SV, v4 for 8C/8C1/1C+/1CK and v3 for 4C. It also lists the OS release ranges associated with those architecture families. These entries are a vendor compatibility reference, not a guarantee that a particular SDK, driver, firmware or package repository is available to every user.
 
 ## Build-time generation selection
 

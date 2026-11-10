@@ -5,9 +5,11 @@ from __future__ import annotations
 import argparse
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
+import tempfile
 
 
 def resolve_compiler(value: str) -> str | None:
@@ -32,44 +34,54 @@ def main() -> int:
         print("Install the MCST toolchain or set E2K_CC to its compiler path.", file=sys.stderr)
         return 2
 
-    command = [compiler, "-dM", "-E", "-x", "c", "-"]
+    probe_source = """#ifndef __e2k__
+#error Selected compiler does not target Elbrus e2k
+#endif
+#ifdef __LCC__
+FB_LCC_VERSION __LCC__
+#else
+FB_LCC_VERSION unavailable
+#endif
+"""
     try:
-        result = subprocess.run(
-            command,
-            input="\n",
-            text=True,
-            capture_output=True,
-            check=False,
-            timeout=20,
-        )
+        with tempfile.TemporaryDirectory(prefix="fragile-baby-e2k-") as directory:
+            source_path = pathlib.Path(directory) / "target_probe.c"
+            source_path.write_text(probe_source, encoding="utf-8")
+            result = subprocess.run(
+                [compiler, "-E", str(source_path)],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=20,
+            )
     except (OSError, subprocess.TimeoutExpired) as exc:
-        print(f"ERROR: cannot query compiler macros: {exc}", file=sys.stderr)
+        print(f"ERROR: cannot query compiler preprocessor: {exc}", file=sys.stderr)
         return 2
 
     if result.returncode != 0:
-        print("ERROR: compiler rejected the predefined-macro probe.", file=sys.stderr)
+        print("ERROR: compiler rejected the E2K preprocessor probe.", file=sys.stderr)
         if result.stderr:
             print(result.stderr.strip(), file=sys.stderr)
         return 2
 
-    macros = {}
-    for line in result.stdout.splitlines():
-        parts = line.split(maxsplit=2)
-        if len(parts) >= 2 and parts[0] == "#define":
-            macros[parts[1]] = parts[2] if len(parts) == 3 else ""
+    if re.search(r"^\s*FB_LCC_VERSION\s+", result.stdout, re.MULTILINE) is None:
+        print("ERROR: compiler output did not contain the target probe marker.", file=sys.stderr)
+        return 2
 
-    if "__e2k__" not in macros:
-        print("ERROR: selected compiler does not define __e2k__.", file=sys.stderr)
-        print("Refusing to classify this compiler as an Elbrus target.", file=sys.stderr)
-        return 3
+    version_match = re.search(
+        r"^\s*FB_LCC_VERSION\s+(\d+)\s*$", result.stdout, re.MULTILINE
+    )
+    lcc_version = version_match.group(1) if version_match else "not exposed"
 
     print(f"Compiler: {compiler}")
     print("Target: Elbrus e2k (__e2k__ confirmed)")
-    print(f"LCC version macro: {macros.get('__LCC__', 'not exposed')}")
-    print(f"GCC compatibility macro: {macros.get('__GNUC__', 'not exposed')}")
+    print(f"LCC major version: {lcc_version}")
     qemu = shutil.which("qemu-e2k")
     print(f"qemu-e2k: {qemu if qemu else 'not found (optional)'}")
-    print("Result: compiler target macro verified; sysroot, linker, runtime and hardware remain separate checks.")
+    print(
+        "Result: compiler target macro verified; sysroot, linker, runtime "
+        "and hardware remain separate checks."
+    )
     return 0
 
 

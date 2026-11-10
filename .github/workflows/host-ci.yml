@@ -22,5 +22,7 @@ jobs:
         run: cmake --build build --parallel 2
       - name: Test
         run: ctest --test-dir build --output-on-failure
-      - name: Validate Python tooling
-        run: python3 -m py_compile one.py scripts/e2k-doctor.py
+      - name: Validate Python tooling and processor catalog
+        run: |
+          python3 -m py_compile one.py scripts/e2k-doctor.py scripts/validate_profiles.py
+          python3 scripts/validate_profiles.py
