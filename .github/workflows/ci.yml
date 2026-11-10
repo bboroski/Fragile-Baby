@@ -1,0 +1,23 @@
+name: Fragile-Baby CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  profile-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate Elbrus profile
+        run: python tools/validate_toolchain_profile.py profiles/elbrus.template.json
+      - name: Validate JSON fixtures
+        run: python -m json.tool profiles/elbrus.template.json
+      - name: Run profile tests
+        run: python -m unittest discover -s tests -v
+      - name: Compile Python sources
+        run: python -m py_compile tools/validate_toolchain_profile.py tests/test_toolchain_profile.py
