@@ -1,0 +1,31 @@
+{
+  "schema_version": "fragile-baby.target-profile.v1",
+  "profile_id": "elbrus-reference",
+  "profile_status": "research-template",
+  "architecture": "elbrus",
+  "target_triple": null,
+  "toolchain": {
+    "compiler": null,
+    "compile_template": ["{compiler}", "{flags}", "-c", "{source}", "-o", "{output}"],
+    "flags": []
+  },
+  "abi": {
+    "pointer_bits": null,
+    "endianness": "unknown",
+    "calling_convention": "unverified"
+  },
+  "capabilities": {
+    "atomic_operations": "unknown",
+    "vector_operations": "unknown",
+    "memory_ordering": "unknown",
+    "interrupt_entry": "unknown",
+    "cache_coherency": "unknown",
+    "debug_interface": "unknown"
+  },
+  "verification": {
+    "toolchain_probe": false,
+    "cross_compile": false,
+    "emulator": false,
+    "hardware": false
+  }
+}
