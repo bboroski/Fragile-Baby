@@ -24,7 +24,8 @@ def validate_profile(document: Any, *, require_toolchain: bool = False) -> list[
         errors.append("architecture must be 'elbrus'")
     if not isinstance(document.get("profile_id"), str) or not document["profile_id"].strip():
         errors.append("profile_id must be non-empty")
-    compiler = (document.get("toolchain") or {}).get("compiler")
+    toolchain_value = document.get("toolchain")
+    compiler = toolchain_value.get("compiler") if isinstance(toolchain_value, dict) else None
     target = document.get("target_triple")
     if require_toolchain:
         if not isinstance(compiler, str) or not compiler.strip():
@@ -60,9 +61,9 @@ def validate_profile(document: Any, *, require_toolchain: bool = False) -> list[
     if not isinstance(abi, dict):
         errors.append("abi must be an object")
     else:
-        if abi.get("pointer_bits") not in ALLOWED_POINTER_WIDTHS:
+        if abi.get("pointer_bits") not in (None, 32, 64, 128):
             errors.append("abi.pointer_bits must be null, 32, 64 or 128")
-        if abi.get("endianness") not in {"unknown", "little", "big"}:
+        if abi.get("endianness") not in ("unknown", "little", "big"):
             errors.append("abi.endianness is invalid")
         if not isinstance(abi.get("calling_convention"), str) or not abi["calling_convention"].strip():
             errors.append("abi.calling_convention must be non-empty")
@@ -72,7 +73,7 @@ def validate_profile(document: Any, *, require_toolchain: bool = False) -> list[
         errors.append("capabilities must be a non-empty object")
     else:
         for key, state in capabilities.items():
-            if not isinstance(key, str) or not key.strip() or state not in CAPABILITY_STATES:
+            if not isinstance(key, str) or not key.strip() or not isinstance(state, str) or state not in CAPABILITY_STATES:
                 errors.append(f"capability {key!r} must use unknown/declared/verified status")
 
     verification = document.get("verification")
