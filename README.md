@@ -15,3 +15,8 @@ These references are passive documentation and research vocabulary only. They do
 ## Promotion gate
 
 Before implementation, define the repository owner role, supported platforms, public interfaces, threat model, build/test strategy, licensing requirements, and dependency direction. Only then should executable code or ecosystem capabilities be introduced. Any future integration must be versioned, independently testable, and reversible.
+
+## Closed-domain metric and boundary model
+
+- [Project-specific boundary and invariant mapping](docs/CLOSED_DOMAIN_METRIC_INTEGRATION.md)
+- [Canonical CDM-1 specification and validator](https://github.com/bboroski/SAMBU/blob/main/docs/CLOSED_DOMAIN_METRIC.md)
