@@ -1,6 +1,6 @@
 #include "fragile_baby/platform.h"
 
-#if defined(__linux__)
+#if defined(__linux__) && defined(__e2k__)
 #include <stdio.h>
 #include <string.h>
 #include <sys/utsname.h>
