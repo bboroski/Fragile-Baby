@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fragile-Baby target qualification profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "target_id", "architecture", "variant", "target", "toolchain", "abi", "features", "qualification"],
+  "properties": {
+    "schema_version": { "const": "fragile-baby.target-profile.v1" },
+    "target_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "architecture": { "const": "elbrus" },
+    "variant": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cpu_model", "board"],
+      "properties": {
+        "cpu_model": { "type": ["string", "null"], "maxLength": 128 },
+        "board": { "type": ["string", "null"], "maxLength": 128 }
+      }
+    },
+    "toolchain": {
+      "type": "object", "additionalProperties": false,
+      "required": ["compiler", "version", "target_triple", "sysroot"],
+      "properties": {
+        "compiler": { "type": ["string", "null"], "maxLength": 256 },
+        "version": { "type": ["string", "null"], "maxLength": 128 },
+        "target_triple": { "type": ["string", "null"], "maxLength": 256 },
+        "sysroot": { "type": ["string", "null"], "maxLength": 1024 }
+      }
+    },
+    "abi": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pointer_width_bits", "endianness", "calling_convention", "stack_alignment_bytes"],
+      "properties": {
+        "pointer_width_bits": { "type": ["integer", "null"], "minimum": 16, "maximum": 128 },
+        "endianness": { "type": ["string", "null"], "enum": ["little", "big", null] },
+        "calling_convention": { "type": ["string", "null"], "maxLength": 256 },
+        "stack_alignment_bytes": { "type": ["integer", "null"], "minimum": 1, "maximum": 4096 }
+      }
+    },
+    "features": {
+      "type": "array", "maxItems": 128, "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 128 }
+    },
+    "qualification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["level", "evidence"],
+      "properties": {
+        "level": { "enum": ["profile_only", "toolchain_detected", "cross_compiled", "emulated", "hardware_validated"] },
+        "evidence": {
+          "type": "array", "maxItems": 128,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["kind", "ref", "sha256"],
+            "properties": {
+              "kind": { "enum": ["toolchain", "build", "emulator", "hardware", "test", "abi"] },
+              "ref": { "type": "string", "minLength": 1, "maxLength": 1024 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
