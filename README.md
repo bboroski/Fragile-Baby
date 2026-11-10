@@ -20,3 +20,13 @@ Before implementation, define the repository owner role, supported platforms, pu
 
 - [Project-specific boundary and invariant mapping](docs/CLOSED_DOMAIN_METRIC_INTEGRATION.md)
 - [Canonical CDM-1 specification and validator](https://github.com/bboroski/SAMBU/blob/main/docs/CLOSED_DOMAIN_METRIC.md)
+
+
+
+## Візуальна система · Amber–Obsidian v2
+
+Індивідуальна графічна мова **Fragile-Baby**: обсидіановий фон, графітові поверхні та власний бурштиновий акцент. Візуальні маркери стану відокремлюють готові, невідомі й ще не реалізовані можливості.
+
+<p align="center"><img src="assets/amber-obsidian-preview.svg" alt="Fragile-Baby interface concept preview" width="100%"></p>
+
+[Специфікація інтерфейсу та меж реалізації](docs/INTERFACE_DESIGN.md).
