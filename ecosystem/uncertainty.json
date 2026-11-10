@@ -1,0 +1,22 @@
+{
+  "schema_version": "klipot.uncertainty.v1",
+  "repository": "bboroski/Fragile-Baby",
+  "items": [
+    {
+      "id": "Fragile-Baby.elbrus-toolchain",
+      "domain": "elbrus-platform",
+      "statement": "The exact E2K CPU model, compiler build, target triple, ABI, sysroot, board revision and hardware lab are operator-supplied facts.",
+      "feature": "Elbrus qualification API with separate toolchain, ABI and hardware evidence gates",
+      "resolution_mode": "explicit-config",
+      "unknown_behavior": "Do not guess compiler names, endianness, pointer width, CPU features or board support; target qualification stays pending.",
+      "verification": [
+        "A complete target profile is required.",
+        "PASS and FAIL states must reference retained reports.",
+        "Qualification requires toolchain, ABI and target bring-up evidence.",
+        "Host tests are not represented as E2K tests."
+      ],
+      "implementation_status": "implemented",
+      "status": "open"
+    }
+  ]
+}
