@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "profile_id": "elbrus-e2k-template",
+  "architecture": {
+    "family": "e2k",
+    "abi": "unknown",
+    "word_bits": 64,
+    "endianness": "unknown"
+  },
+  "toolchain": {
+    "compiler": "unknown",
+    "compiler_version": "unknown",
+    "target_triple": "unknown",
+    "sysroot": "unknown",
+    "linker": "unknown"
+  },
+  "status": "unverified",
+  "evidence": []
+}
