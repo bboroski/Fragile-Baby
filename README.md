@@ -15,3 +15,7 @@ These references are passive documentation and research vocabulary only. They do
 ## Promotion gate
 
 Before implementation, define the repository owner role, supported platforms, public interfaces, threat model, build/test strategy, licensing requirements, and dependency direction. Only then should executable code or ecosystem capabilities be introduced. Any future integration must be versioned, independently testable, and reversible.
+
+## Примітка щодо сумісності Reaper cycle
+
+[Контракт сумісності](docs/architecture/reaper-cycle-compatibility.md) описує потенційну точку інтеграції з детермінованою 64-бітною моделлю ReaperCripple. Це лише пропозиція для майбутньої перевірки: вона не визначає продуктову роль Fragile-Baby, не оголошує підтримку процесорів і не означає наявність runtime, компілятора, BSP чи завантажувача.
