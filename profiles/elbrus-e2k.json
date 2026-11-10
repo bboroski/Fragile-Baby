@@ -1,0 +1,22 @@
+{
+  "schema_version": "fragile-baby.elbrus-profile.v1",
+  "profile_id": "elbrus-e2k",
+  "architecture": "e2k",
+  "cpu_model": null,
+  "compiler_path": null,
+  "compiler_version": null,
+  "sysroot": null,
+  "abi": null,
+  "pointer_bits": null,
+  "endianness": null,
+  "qualification": {
+    "toolchain": "unknown",
+    "abi": "unknown",
+    "hardware": "unknown"
+  },
+  "policy": {
+    "require_explicit_toolchain": true,
+    "do_not_guess_compiler_name": true,
+    "do_not_claim_target_support_without_evidence": true
+  }
+}
