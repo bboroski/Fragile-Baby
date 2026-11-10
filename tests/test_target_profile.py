@@ -47,6 +47,12 @@ class TargetProfileTests(unittest.TestCase):
         with self.assertRaises(ProfileError):
             validate_profile(profile)
 
+    def test_ill_typed_endianness_is_rejected(self):
+        profile = _fixture("toolchain_detected")
+        profile["abi"]["endianness"] = []
+        with self.assertRaises(ProfileError):
+            validate_profile(profile)
+
     def test_architecture_and_evidence_hash_are_validated(self):
         profile = _fixture()
         profile["architecture"] = "x86_64"
