@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "repository": "bboroski/Fragile-Baby",
+  "role": "processor architecture enablement and compatibility laboratory",
+  "maturity": "placeholder; no implementation or qualified target",
+  "domains": {
+    "lucifer": {
+      "status": "partial",
+      "evidence": [
+        "README.md",
+        "docs/REAPER_DOMAIN_INTEGRATION.md"
+      ]
+    },
+    "beelzebub": {
+      "status": "planned",
+      "evidence": []
+    },
+    "leviathan": {
+      "status": "planned",
+      "evidence": []
+    },
+    "asmodeus": {
+      "status": "planned",
+      "evidence": []
+    },
+    "belphegor": {
+      "status": "planned",
+      "evidence": []
+    },
+    "mammon": {
+      "status": "planned",
+      "evidence": []
+    },
+    "satan": {
+      "status": "planned",
+      "evidence": []
+    },
+    "belial": {
+      "status": "planned",
+      "evidence": []
+    },
+    "astaroth": {
+      "status": "partial",
+      "evidence": [
+        "README.md",
+        "docs/REAPER_DOMAIN_INTEGRATION.md"
+      ]
+    },
+    "baal": {
+      "status": "planned",
+      "evidence": []
+    },
+    "adramelech": {
+      "status": "planned",
+      "evidence": []
+    },
+    "ariel": {
+      "status": "planned",
+      "evidence": []
+    },
+    "pazuzu": {
+      "status": "planned",
+      "evidence": []
+    }
+  },
+  "integrations": [
+    {
+      "repository": "bboroski/ReaperCripple",
+      "relation": "adapter",
+      "status": "planned"
+    },
+    {
+      "repository": "bboroski/Kloz",
+      "relation": "adapter",
+      "status": "planned"
+    },
+    {
+      "repository": "bboroski/NUN",
+      "relation": "contract",
+      "status": "planned"
+    }
+  ]
+}
