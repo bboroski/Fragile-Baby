@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bboroski/Fragile-Baby/blob/main/spec/toolchain-profile.schema.json",
+  "title": "Fragile-Baby Elbrus Toolchain Profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "architecture",
+    "toolchain",
+    "status",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]+$"
+    },
+    "architecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family",
+        "abi",
+        "word_bits",
+        "endianness"
+      ],
+      "properties": {
+        "family": {
+          "const": "e2k"
+        },
+        "abi": {
+          "type": "string",
+          "minLength": 1
+        },
+        "word_bits": {
+          "enum": [
+            32,
+            64
+          ]
+        },
+        "endianness": {
+          "enum": [
+            "unknown",
+            "little",
+            "big"
+          ]
+        }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compiler",
+        "compiler_version",
+        "target_triple",
+        "sysroot",
+        "linker"
+      ],
+      "properties": {
+        "compiler": {
+          "type": "string",
+          "minLength": 1
+        },
+        "compiler_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_triple": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sysroot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "linker": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "unverified",
+        "host-validated",
+        "target-validated"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "reference",
+          "result"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "compiler",
+              "build",
+              "test",
+              "emulator",
+              "hardware",
+              "vendor-documentation"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "result": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
