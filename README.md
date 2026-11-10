@@ -1,17 +1,42 @@
 # Fragile-Baby
 
-**Status:** project placeholder and integration-reference scaffold.
+**Elbrus / E2K Target Qualification Framework**
 
-The repository currently contains no product implementation, public API, build system, supported hardware target, or test suite. Its intended product role still needs to be defined; this README deliberately does not invent one.
+<p><img src="assets/duck-ui/duck-mark.svg" alt="Duck mark" width="88" /></p>
 
-## Cross-project domain references
+Fragile-Baby turns missing information about Elbrus systems into explicit target-profile fields, compiler and ABI probes, hardware evidence gates, and reproducible qualification reports.
 
-- [Reaper-inspired engineering integration notes](docs/REAPER_DOMAIN_INTEGRATION.md)
-- [Canonical 50-pattern engineering catalogue in SAMBU](https://github.com/bboroski/SAMBU/blob/main/data/reaper/engineering_patterns_50.tsv)
-- [Academic biology glossary in SAMBU](https://github.com/bboroski/SAMBU/blob/main/data/biology/academic_terms_500.tsv)
+## Implemented host-side features
 
-These references are passive documentation and research vocabulary only. They do not imply that Fragile-Baby implements a runtime, biological model, AI system, hardware controller, or Mass Effect technology.
+- Versioned E2K profile model with explicit CPU model, compiler, compiler version, sysroot, ABI, pointer width, and endianness.
+- Separate toolchain, ABI, and hardware bring-up evidence states.
+- PASS and FAIL evidence must reference retained reports.
+- The fb_elbrus_evaluate API returns a deterministic qualification stage and refuses to infer missing configuration.
+- CMake host build, unit tests, and a one-command check entrypoint.
 
-## Promotion gate
+## Quick start
 
-Before implementation, define the repository owner role, supported platforms, public interfaces, threat model, build/test strategy, licensing requirements, and dependency direction. Only then should executable code or ecosystem capabilities be introduced. Any future integration must be versioned, independently testable, and reversible.
+    cmake -S . -B build -DBUILD_TESTING=ON
+    cmake --build build
+    ctest --test-dir build --output-on-failure
+    python one.py check
+
+## Qualification sequence
+
+NEEDS_CONFIGURATION → TOOLCHAIN_PENDING → ABI_PENDING → HARDWARE_PENDING → QUALIFIED
+
+A failed toolchain, ABI, or hardware gate moves the profile into its corresponding blocked state. An incomplete profile remains unqualified.
+
+## Elbrus toolchain
+
+cmake/toolchains/elbrus-e2k.cmake requires the caller to supply the verified compiler executable and sysroot via FRAGILE_BABY_E2K_C_COMPILER and FRAGILE_BABY_E2K_SYSROOT. It deliberately does not guess compiler names, target triples, CPU variants, or ABI details.
+
+## Evidence boundary
+
+The current test suite runs on a host C11 compiler and validates only the qualification state machine. No actual E2K compiler, sysroot, CPU, board, or peripheral has been qualified by this host test. The profile starts with unknown target facts, and hardware support remains pending until target-side evidence is supplied.
+
+See docs/ELBRUS_QUALIFICATION.md and ecosystem/uncertainty.json.
+
+## License
+
+Not yet selected. Distribution requires an explicit owner decision and a complete license text.
