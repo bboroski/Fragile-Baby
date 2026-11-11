@@ -31,6 +31,10 @@
 - Не оголошуйте функцію production-ready лише на підставі макета, специфікації чи відкритого Pull Request.
 - Зовнішні інтеграції мають бути явними, версіонованими, ізольованими й перевірюваними.
 
+## Інтеграція можливостей екосистеми
+
+Карта перенесення перевірених можливостей з усіх пов'язаних репозиторіїв у повний цикл Elbrus/E2K: [ECOSYSTEM_CAPABILITY_INTEGRATION.md](docs/ECOSYSTEM_CAPABILITY_INTEGRATION.md). Машиночитаний реєстр: [ecosystem-capabilities.v1.json](docs/qualification/ecosystem-capabilities.v1.json). Інтеграції виконуються через версіоновані контракти; наявність опису не означає готовий адаптер або апаратну кваліфікацію.
+
 ## NUN Mesh та пов'язані репозиторії
 [SAMBU](https://github.com/bboroski/SAMBU) · [ToolNG](https://github.com/bboroski/ToolNG) · [ReaperCripple](https://github.com/bboroski/ReaperCripple) · [Kloz](https://github.com/bboroski/Kloz) · [CO](https://github.com/bboroski/CO) · [SaintSI](https://github.com/bboroski/SaintSI) · [Klipot](https://github.com/bboroski/Klipot) · [NUN](https://github.com/bboroski/NUN) · [NUNLauncher](https://github.com/bboroski/NUNLauncher) · [Fragile-Baby](https://github.com/bboroski/Fragile-Baby) · [Luci](https://github.com/bboroski/Luci)
 
