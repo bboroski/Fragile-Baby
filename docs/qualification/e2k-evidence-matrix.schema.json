@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fragile-Baby Elbrus qualification evidence matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "architecture", "maturity", "target_identity", "stages"],
+  "properties": {
+    "schema_version": {"const": "fragile-baby.e2k-evidence.v1"},
+    "architecture": {"const": "E2K"},
+    "maturity": {"enum": ["architecture-proposal", "host-observed", "cross-build-observed", "emulator-observed", "hardware-qualified"]},
+    "target_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_model", "stepping", "board_revision", "toolchain"],
+      "properties": {
+        "cpu_model": {"type": ["string", "null"]},
+        "stepping": {"type": ["string", "null"]},
+        "board_revision": {"type": ["string", "null"]},
+        "toolchain": {"type": ["string", "null"]}
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stage", "status", "evidence"],
+        "properties": {
+          "stage": {"enum": ["host", "cross-build", "emulator", "physical-target"]},
+          "status": {"enum": ["not-tested", "passed", "failed", "blocked", "unknown"]},
+          "evidence": {"type": "array", "maxItems": 16, "items": {"type": "string", "maxLength": 512}},
+          "toolchain_fingerprint": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "limitations": {"type": "array", "maxItems": 32, "items": {"type": "string", "maxLength": 512}}
+  }
+}
