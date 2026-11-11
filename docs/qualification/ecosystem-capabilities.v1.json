@@ -1,0 +1,187 @@
+{
+  "schema_version": "fragile-baby.ecosystem-capabilities.v1",
+  "target": "E2K",
+  "integration_policy": "versioned-contracts-and-adapters",
+  "lifecycle": [
+    "discover",
+    "configure",
+    "build",
+    "package-validate",
+    "boot-execute",
+    "observe",
+    "recover",
+    "qualify",
+    "release"
+  ],
+  "qualification_stages": [
+    "host",
+    "cross-build",
+    "emulator",
+    "physical-target"
+  ],
+  "maturity": [
+    "planned",
+    "implemented",
+    "host-tested",
+    "cross-compiled",
+    "emulator-tested",
+    "hardware-qualified"
+  ],
+  "sources": [
+    {
+      "repository": "bboroski/SAMBU",
+      "role": "language-tooling-and-modeling",
+      "capabilities": [
+        "lexer-parser-ast",
+        "typed-ir-slice",
+        "cli-test-runner",
+        "scientific-models",
+        "spatial-data",
+        "e2k-profile-metadata"
+      ],
+      "integration": "optional-build-and-test-adapter",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/ToolNG",
+      "role": "host-evidence-collection",
+      "capabilities": [
+        "read-only-device-inventory",
+        "event-observation",
+        "local-reports",
+        "evidence-completeness",
+        "redaction"
+      ],
+      "integration": "host-only-evidence-adapter",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/ReaperCripple",
+      "role": "embedded-lifecycle-and-bsp-patterns",
+      "capabilities": [
+        "bsp-contracts",
+        "bootstrap-lifecycle",
+        "fault-degraded-states",
+        "rollback",
+        "board-profiles",
+        "calibration",
+        "crc",
+        "cmake-ctest"
+      ],
+      "integration": "e2k-board-adapter-after-board-specification",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/Kloz",
+      "role": "portable-low-level-substrate",
+      "capabilities": [
+        "fixed-width-status",
+        "versioned-platform-abi",
+        "caller-owned-arena",
+        "alignment-overflow-checks",
+        "resource-budgets"
+      ],
+      "integration": "versioned-platform-ops-abi",
+      "status": "contract-review-required"
+    },
+    {
+      "repository": "bboroski/CO",
+      "role": "deterministic-runtime-lifecycle",
+      "capabilities": [
+        "explicit-state-machine",
+        "caller-owned-runtime",
+        "init-step-shutdown-callbacks",
+        "recursion-guards"
+      ],
+      "integration": "qualification-agent-lifecycle",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/SaintSI",
+      "role": "health-and-integrity",
+      "capabilities": [
+        "bounded-component-registry",
+        "heartbeat",
+        "monotonic-timeouts",
+        "healthy-degraded-states",
+        "crc32"
+      ],
+      "integration": "qualification-health-monitor",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/Klipot",
+      "role": "integration-registry-and-dashboard",
+      "capabilities": [
+        "repository-catalog",
+        "machine-readable-registry",
+        "versioned-protocol",
+        "schema-contract-ci"
+      ],
+      "integration": "manifest-and-dashboard-adapter",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/NUN",
+      "role": "future-os-kernel-contracts",
+      "capabilities": [
+        "cpu-entry-contract",
+        "exceptions-interrupts",
+        "memory-model",
+        "execution-sync",
+        "device-boundaries"
+      ],
+      "integration": "e2k-port-requirements-only",
+      "status": "not-e2k-implemented"
+    },
+    {
+      "repository": "bboroski/NUNLauncher",
+      "role": "boot-image-validation",
+      "capabilities": [
+        "kernel-header-validation",
+        "entry-offset-bounds",
+        "memory-map-validation",
+        "versioned-boot-info"
+      ],
+      "integration": "e2k-image-contract-after-format-specification",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/Luci",
+      "role": "policy-and-capability-registry",
+      "capabilities": [
+        "domain-registry",
+        "manifest-validation",
+        "fail-closed-policy",
+        "maturity-evidence-boundaries"
+      ],
+      "integration": "local-policy-validation",
+      "status": "adapter-required"
+    },
+    {
+      "repository": "bboroski/Hellduck",
+      "role": "ecosystem-federation",
+      "capabilities": [
+        "pinned-upstream-workspace",
+        "integration-map",
+        "registry-integrity"
+      ],
+      "integration": "read-only-upstream-discovery",
+      "status": "reference-only"
+    },
+    {
+      "repository": "bboroski/9circ",
+      "role": "unassessed",
+      "capabilities": [],
+      "integration": "audit-required",
+      "status": "not-assessed"
+    }
+  ],
+  "guardrails": [
+    "no-implicit-code-execution",
+    "no-unreviewed-mmio-or-firmware-writes",
+    "no-cross-isa-inference",
+    "no-hardware-claim-from-host-ci",
+    "preserve-upstream-ownership"
+  ]
+}
