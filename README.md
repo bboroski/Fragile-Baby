@@ -40,3 +40,10 @@
 
 ---
 **Створено з любов'ю до інженерії, системності та людей.**
+
+
+## Elbrus Qualification Workbench GUI
+
+The [Fragile-Baby Qualification Workbench prototype](docs/gui/index.html) and [1600×900 vector preview](docs/gui/preview.svg) organize CPU/SoC identity, toolchain records, image and memory layout requirements, and target-evidence gates. **No verified E2K target implementation or hardware qualification is claimed; sample UI records are illustrative.**
+
+The prototype is responsive, keyboard-operable and reduced-motion aware. See [E2K evidence matrix](docs/qualification/e2k-evidence-matrix.md) and [example evidence schema](docs/qualification/e2k-evidence-matrix.schema.json).
