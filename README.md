@@ -6,13 +6,13 @@
 
 > **Fragile-Baby** — Fragile-Baby — окремий інженерний напрям для дослідження Elbrus/E2K та підготовки перевірюваної кваліфікації платформи.
 
-
 ## NEON SYNDICATE — візуальна система
 
 <p align="center"><img src="assets/neon-syndicate/overview.svg" alt="Fragile-Baby — NEON SYNDICATE vector concept" width="1200"></p>
 <p align="center"><em>Векторна архітектурна/інтерфейсна концепція, а не скриншот запущеної системи чи live-телеметрія.</em></p>
 
 [Брендбук](design/NEON_SYNDICATE.md) · [Токени дизайну](design/neon-syndicate.tokens.json)
+
 
 ## Поточні можливості
 - CPU/SoC, stepping та ABI identity profile.
@@ -55,4 +55,4 @@
 
 ## Федерація Hellduck
 
-Цей репозиторій входить до федерації [Hellduck](https://github.com/bboroski/Hellduck) — спільного каталогу проєктів, контрактних зв’язків і станів інтеграції. Вихідний код, API, тести та цикл випуску залишаються відповідальністю цього репозиторію; Hellduck індексує зв’язки й не завантажує та не виконує код учасників.
+Цей репозиторій входить до федерації [Hellduck](https://github.com/bboroski/Hellduck) — спільного каталогу проєктів, контрактних зв’язків і станів інтеграції. Вихідний код, API, тести та цикл випуску залишаються відповідальністю цього репозиторію; Hellduck індексує зв’язки й не завантажує та не виконує код учасників. Практичні сценарії взаємодії, типи адаптерів і межі сумісності: [Integration Playbook](https://github.com/bboroski/Hellduck/blob/main/docs/INTEGRATION_PLAYBOOK.md).
