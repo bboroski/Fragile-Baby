@@ -1,7 +1,9 @@
 <!-- Title: Fragile-Baby — Elbrus E2K architecture research and platform qualification -->
 <p align="center"><img src="assets/duck-ui/duck-mark.svg" alt="Логотип Fragile-Baby" width="76"></p>
 
-# Fragile-Baby — дослідження архітектури Elbrus/E2K та кваліфікації платформи
+# Fragile-Baby
+
+> **Visual identity:** Duck Black / Yellow — accent `#FFD600`, primary ink `#111111`.
 
 [![Documentation quality gate](https://github.com/bboroski/Fragile-Baby/actions/workflows/duck-quality-gate.yml/badge.svg?branch=main)](https://github.com/bboroski/Fragile-Baby/actions/workflows/duck-quality-gate.yml)
 
