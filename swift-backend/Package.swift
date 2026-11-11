@@ -1,0 +1,3 @@
+// swift-tools-version: 6.0
+import PackageDescription
+let package=Package(name:"FragileBabyBackend",platforms:[.macOS(.v13)],products:[.library(name:"FragileBabyBackendCore",targets:["FragileBabyBackendCore"]),.executable(name:"fragilebaby-server",targets:["FragileBabyBackendServer"])],dependencies:[.package(url:"https://github.com/vapor/vapor.git",from:"4.110.0")],targets:[.target(name:"FragileBabyBackendCore",dependencies:[.product(name:"Vapor",package:"vapor")]),.executableTarget(name:"FragileBabyBackendServer",dependencies:["FragileBabyBackendCore",.product(name:"Vapor",package:"vapor")]),.testTarget(name:"FragileBabyBackendCoreTests",dependencies:["FragileBabyBackendCore"])],swiftLanguageModes:[.v6])
