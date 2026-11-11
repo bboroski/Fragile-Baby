@@ -1,3 +1,5 @@
+
+> **Brand palette:** signal yellow `#FFD600`; deep black `#111111`.
 <h1 align="center">Fragile-Baby</h1>
 <p align="center"><strong>Elbrus Architecture &amp; Platform Qualification Workstream</strong></p>
 <p align="center"><img src="https://img.shields.io/badge/STATUS-ARCHITECTURE%20PROPOSAL-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/TARGET-ELBRUS%20%2F%20E2K-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/LICENSE-NOT%20DECLARED-FFD600?style=for-the-badge&labelColor=111111"></p>
