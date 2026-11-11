@@ -53,3 +53,7 @@ Host-тести підтверджують лише програмні інва�
 ---
 
 **Створено з любов'ю до відкритої інженерії та людей.**
+
+## E2K / Elbrus support
+
+This repository now contains the E2K target profile and shared LCC toolchain. Current maturity is architecture profile and integration planning only; it does not yet provide a bootloader, firmware interface, kernel or native runtime. See [the E2K workstream](docs/E2K_ELBRUS.md).
