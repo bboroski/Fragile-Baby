@@ -13,9 +13,8 @@
 - Host, cross-build, emulator and physical-target evidence matrix.
 
 ## Quick start and verification
-```bash
-Review the specifications and qualification documents; a target build requires a concrete toolchain and hardware.
-```
+
+This repository documents an Elbrus/E2K qualification workstream, not a ready target build. Review the toolchain, linker layout, image format and board requirements. A target build is possible only after the concrete toolchain and hardware are confirmed.
 
 ## Architecture and verified scope
 No verified E2K target implementation, boot path or hardware qualification is present. Host tests do not prove Elbrus compatibility; platform parameters must not be inferred from another ISA.
