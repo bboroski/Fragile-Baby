@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "bboroski/Fragile-Baby",
+  "optimization_method": "four-vector",
+  "status": "baseline_pending",
+  "implementation_status": "profile_added",
+  "product_role": "platform-evidence-advisor",
+  "detected_stack": "python",
+  "vectors": {
+    "physics": {
+      "focus": "latency-throughput-resource-cost",
+      "metrics": [
+        "evidence_parse_latency",
+        "matrix_size",
+        "report_generation_latency"
+      ],
+      "baseline": "not_measured"
+    },
+    "biology": {
+      "focus": "bounded-resource-lifecycle-and-feedback",
+      "controls": [
+        "bounded_input_size",
+        "missing_stale_invalid_states"
+      ],
+      "baseline": "not_measured"
+    },
+    "technology": {
+      "focus": "modularity-contracts-security",
+      "boundaries": [
+        "evidence_schema",
+        "target_matrix",
+        "advisory_logic"
+      ]
+    },
+    "sambo": {
+      "focus": "reuse-leverage-and-safe-deferral",
+      "strategies": [
+        "reuse_validators",
+        "content_hash_cache"
+      ]
+    }
+  },
+  "verification": {
+    "commands": [
+      "python -m pytest"
+    ],
+    "results": "not_run_in_this_change"
+  },
+  "guardrails": [
+    "Advisor output is not target qualification"
+  ],
+  "acceptance": [
+    "baseline recorded on a named platform",
+    "no unbounded queues caches retries or loops",
+    "errors and partial results remain explicit",
+    "public contracts remain compatible or are versioned",
+    "performance claims have before-after evidence"
+  ],
+  "updated_at": "2026-11-11"
+}
