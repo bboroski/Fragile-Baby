@@ -1,52 +1,41 @@
+<p align="center"><img src="assets/duck-ui/duck-mark.svg" alt="Fragile-Baby mark" width="92"></p>
 <h1 align="center">Fragile-Baby</h1>
-<p align="center"><strong>Elbrus Architecture &amp; Platform Qualification Workstream</strong></p>
-<p align="center"><img src="https://img.shields.io/badge/STATUS-ARCHITECTURE%20PROPOSAL-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/TARGET-ELBRUS%20%2F%20E2K-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/LICENSE-NOT%20DECLARED-FFD600?style=for-the-badge&labelColor=111111"></p>
+<p align="center"><strong>Elbrus Architecture & Platform Qualification Workstream</strong></p>
+<p align="center"><strong>Архитектурное предложение · доказательства целевой платформы ожидаются</strong></p>
 <p align="center"><a href="README.md">🇺🇦 Українська</a> · <a href="README.en.md">🇬🇧 English</a> · <a href="README.ru.md">🇷🇺 Русский</a></p>
 
----
+> **Fragile-Baby** — Fragile-Baby — инженерное направление исследования Elbrus/E2K и подготовки проверяемой квалификации платформы.
 
-**Fragile-Baby — отдельное инженерное направление для исследования архитектуры Elbrus/E2K и подготовки проверяемой поддержки процессорной платформы.** Цель — определить точные ABI, toolchain, memory-map и boot-контракты до заявления о совместимости.
+## Текущие возможности
+- Профили идентичности CPU/SoC, stepping и ABI.
+- Требования к toolchain, linker layout, image format и memory map.
+- Версионированные manifest для CPU, board revision и compiler toolchain.
+- Матрица доказательств host, cross-build, emulator и physical target.
 
-## Текущий статус
+## Быстрый старт и проверка
+```bash
+Изучите спецификации и qualification documents; сборка под target требует конкретного toolchain и оборудования.
+```
 
-<badge>ARCHITECTURE PROPOSAL</badge>
+## Архитектура и подтверждённые границы
+Проверенная E2K target-реализация, boot path или аппаратная квалификация отсутствуют. Host-тесты не доказывают совместимость с Elbrus; параметры нельзя выводить из другой ISA.
 
-Репозиторий содержит архитектурное предложение и справочные материалы по интеграции. Проверенной target-реализации, подтверждённого boot path или аппаратной квалификации нет. Ни одна модель процессора или плата Elbrus не объявляется поддерживаемой.
+## Инженерное качество
+- Запускайте проверки для целевой платформы; host CI не заменяет аппаратную квалификацию.
+- Статусы implemented, partial и planned должны подтверждаться кодом, тестами и доказательствами.
+- Макет, спецификация или открытый Pull Request не доказывают production-ready реализацию.
+- Внешние интеграции должны быть явными, версионированными, изолированными и тестируемыми.
 
-## Инженерная область
+## NUN Mesh и связанные репозитории
+[SAMBU](https://github.com/bboroski/SAMBU) · [ToolNG](https://github.com/bboroski/ToolNG) · [ReaperCripple](https://github.com/bboroski/ReaperCripple) · [Kloz](https://github.com/bboroski/Kloz) · [CO](https://github.com/bboroski/CO) · [SaintSI](https://github.com/bboroski/SaintSI) · [Klipot](https://github.com/bboroski/Klipot) · [NUN](https://github.com/bboroski/NUN) · [NUNLauncher](https://github.com/bboroski/NUNLauncher) · [Fragile-Baby](https://github.com/bboroski/Fragile-Baby) · [Luci](https://github.com/bboroski/Luci)
 
-- Профили ABI и toolchain для конкретной цели.
-- Проверка формата образа, memory map, диапазонов адресов и alignment.
-- Проверки linker layout и секций.
-- Версионируемые manifest для CPU/SoC, stepping, board revision и toolchain.
-- Воспроизводимая матрица host, cross-build, emulator и physical-target evidence.
-- Узкий платформенный интерфейс с явными capability gates.
+Каждый репозиторий сохраняет каноническое имя, собственный код, API, цикл выпуска и границы ответственности. Интеграция означает версионированные контракты, а не автоматическое слияние независимых runtime.
 
-## Контракт квалификации
+## Дизайн и документация
+Общее направление интерфейсов — **Duck Black / Yellow**: тёмные поверхности, жёлтые акценты для действий и состояний, читаемая типографика, доступный контраст, клавиатурная навигация и поддержка reduced motion. Подробности — в [design/DUCK_UI_SYSTEM.md](design/DUCK_UI_SYSTEM.md), если файл присутствует.
 
-| Уровень | Необходимые данные |
-|---|---|
-| CPU | Точная модель, stepping и доступные ISA/privilege features |
-| Плата | Board revision, memory map, MMIO и DMA windows |
-| Toolchain | Компилятор, binutils/linker, ABI и startup objects |
-| Image | Формат, секции, alignment, checksum и границы адресов |
-| Emulator | Конкретный эмулятор, версия и воспроизводимые результаты |
-| Hardware | Физическая загрузка, serial/diagnostic output и тестовые доказательства |
-
-Host-тесты подтверждают только программные инварианты. Они не заменяют cross-build, эмуляцию или проверку на физическом оборудовании. Свойства Elbrus нельзя выводить из ARM, x86 или RISC-V: каждый порт должен опираться на документацию конкретного CPU и платформы.
-
-## Управление и границы
-
-До реализации необходимо определить владельца домена, поддерживаемые варианты CPU, публичные интерфейсы, threat model, build/test strategy, лицензию и направления зависимостей. Новые интеграции должны быть версионируемыми, независимо тестируемыми и обратимыми.
-
-Документация: [инженерная интеграция](docs/REAPER_DOMAIN_INTEGRATION.md) · [профиль границ и инвариантов](docs/CLOSED_DOMAIN_METRIC_INTEGRATION.md) · [каноническая спецификация CDM-1 в SAMBU](https://github.com/bboroski/SAMBU/blob/main/docs/CLOSED_DOMAIN_METRIC.md).
-
-## Экосистема и лицензия
-
-Связанные проекты: [Kloz](https://github.com/bboroski/Kloz), [ReaperCripple](https://github.com/bboroski/ReaperCripple), [NUN](https://github.com/bboroski/NUN), [NUNLauncher](https://github.com/bboroski/NUNLauncher) и [Klipot](https://github.com/bboroski/Klipot).
-
-Файл <code>LICENSE</code> отсутствует; лицензия не объявлена. Определите условия до публичного распространения.
+## Лицензия
+Лицензия не объявлена; файл LICENSE отсутствует.
 
 ---
-
-**Создано с любовью к открытой инженерии и людям.**
+**Создано с любовью к инженерии, системности и людям.**
