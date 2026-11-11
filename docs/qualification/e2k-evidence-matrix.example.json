@@ -1,0 +1,22 @@
+{
+  "schema_version": "fragile-baby.e2k-evidence.v1",
+  "architecture": "E2K",
+  "maturity": "architecture-proposal",
+  "target_identity": {
+    "cpu_model": null,
+    "stepping": null,
+    "board_revision": null,
+    "toolchain": null
+  },
+  "stages": [
+    {"stage": "host", "status": "not-tested", "evidence": [], "toolchain_fingerprint": null},
+    {"stage": "cross-build", "status": "not-tested", "evidence": [], "toolchain_fingerprint": null},
+    {"stage": "emulator", "status": "not-tested", "evidence": [], "toolchain_fingerprint": null},
+    {"stage": "physical-target", "status": "not-tested", "evidence": [], "toolchain_fingerprint": null}
+  ],
+  "limitations": [
+    "No CPU identity, stepping, board revision or E2K toolchain is inferred.",
+    "Host evidence cannot promote a result to emulator or physical-target qualification.",
+    "Hardware qualification requires traceable target evidence reviewed independently."
+  ]
+}
