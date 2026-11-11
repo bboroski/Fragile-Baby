@@ -1,52 +1,41 @@
+<p align="center"><img src="assets/duck-ui/duck-mark.svg" alt="Fragile-Baby mark" width="92"></p>
 <h1 align="center">Fragile-Baby</h1>
-<p align="center"><strong>Elbrus Architecture &amp; Platform Qualification Workstream</strong></p>
-<p align="center"><img src="https://img.shields.io/badge/STATUS-ARCHITECTURE%20PROPOSAL-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/TARGET-ELBRUS%20%2F%20E2K-FFD600?style=for-the-badge&labelColor=111111"><img src="https://img.shields.io/badge/LICENSE-NOT%20DECLARED-FFD600?style=for-the-badge&labelColor=111111"></p>
+<p align="center"><strong>Elbrus Architecture & Platform Qualification Workstream</strong></p>
+<p align="center"><strong>Architecture proposal · target evidence pending</strong></p>
 <p align="center"><a href="README.md">🇺🇦 Українська</a> · <a href="README.en.md">🇬🇧 English</a> · <a href="README.ru.md">🇷🇺 Русский</a></p>
 
----
+> **Fragile-Baby** — Fragile-Baby is an engineering workstream for researching Elbrus/E2K and preparing verifiable platform qualification.
 
-**Fragile-Baby is a dedicated engineering workstream for Elbrus/E2K architecture research and verifiable processor-platform enablement.** Its purpose is to define exact ABI, toolchain, memory-map, and boot contracts before any compatibility claim is made.
+## Current capabilities
+- CPU/SoC, stepping and ABI identity profiles.
+- Toolchain, linker layout, image format and memory-map requirements.
+- Versioned manifests for CPU, board revision and compiler toolchain.
+- Host, cross-build, emulator and physical-target evidence matrix.
 
-## Current status
+## Quick start and verification
+```bash
+Review the specifications and qualification documents; a target build requires a concrete toolchain and hardware.
+```
 
-<badge>ARCHITECTURE PROPOSAL</badge>
+## Architecture and verified scope
+No verified E2K target implementation, boot path or hardware qualification is present. Host tests do not prove Elbrus compatibility; platform parameters must not be inferred from another ISA.
 
-The repository currently contains an architecture proposal and integration-reference material. There is no verified target implementation, proven boot path, or hardware qualification. No Elbrus CPU model or board is declared supported.
+## Engineering quality
+- Run the checks appropriate to the target platform; host CI is not hardware qualification.
+- Mark capabilities as implemented, partial or planned according to code, tests and evidence.
+- A mockup, specification or open pull request is not proof of a production-ready feature.
+- External integrations must be explicit, versioned, isolated and testable.
 
-## Engineering scope
+## NUN Mesh and related repositories
+[SAMBU](https://github.com/bboroski/SAMBU) · [ToolNG](https://github.com/bboroski/ToolNG) · [ReaperCripple](https://github.com/bboroski/ReaperCripple) · [Kloz](https://github.com/bboroski/Kloz) · [CO](https://github.com/bboroski/CO) · [SaintSI](https://github.com/bboroski/SaintSI) · [Klipot](https://github.com/bboroski/Klipot) · [NUN](https://github.com/bboroski/NUN) · [NUNLauncher](https://github.com/bboroski/NUNLauncher) · [Fragile-Baby](https://github.com/bboroski/Fragile-Baby) · [Luci](https://github.com/bboroski/Luci)
 
-- Target-specific ABI and toolchain profiles.
-- Image-format, memory-map, address-range, and alignment validation.
-- Linker-layout and section checks.
-- Versioned manifests for CPU/SoC, stepping, board revision, and toolchain.
-- Reproducible evidence matrix for host, cross-build, emulator, and physical target.
-- Narrow platform interface with explicit capability gates.
+Each repository retains its canonical name, code, APIs, release lifecycle and ownership boundaries. Integration means versioned contracts, not automatic merging of independent runtimes.
 
-## Qualification contract
+## Design and documentation
+The shared interface direction is **Duck Black / Yellow**: dark surfaces, yellow accents for actions and state, readable typography, accessible contrast, keyboard navigation and reduced-motion support. See [design/DUCK_UI_SYSTEM.md](design/DUCK_UI_SYSTEM.md) when present.
 
-| Layer | Required evidence |
-|---|---|
-| CPU | Exact model, stepping, and available ISA/privilege features |
-| Board | Revision, memory map, MMIO, and DMA windows |
-| Toolchain | Compiler, binutils/linker, ABI, and startup objects |
-| Image | Format, sections, alignment, checksum, and address bounds |
-| Emulator | Specific emulator, version, and reproducible results |
-| Hardware | Physical boot, serial/diagnostic output, and test evidence |
-
-Host tests verify software invariants only. They do not replace cross-build, emulation, or physical-hardware validation. Elbrus properties must not be inferred from ARM, x86, or RISC-V; each port must use documentation for the exact CPU and platform.
-
-## Governance and boundaries
-
-Before implementation, define domain ownership, supported CPU variants, public interfaces, threat model, build/test strategy, license, and dependency direction. New integrations must be versioned, independently testable, and reversible.
-
-Documentation: [engineering integration](docs/REAPER_DOMAIN_INTEGRATION.md) · [boundary and invariant profile](docs/CLOSED_DOMAIN_METRIC_INTEGRATION.md) · [canonical CDM-1 specification in SAMBU](https://github.com/bboroski/SAMBU/blob/main/docs/CLOSED_DOMAIN_METRIC.md).
-
-## Ecosystem and license
-
-Related projects: [Kloz](https://github.com/bboroski/Kloz), [ReaperCripple](https://github.com/bboroski/ReaperCripple), [NUN](https://github.com/bboroski/NUN), [NUNLauncher](https://github.com/bboroski/NUNLauncher), and [Klipot](https://github.com/bboroski/Klipot).
-
-No <code>LICENSE</code> file is present; no license is declared. Define the terms before public distribution.
+## License
+License not declared; no LICENSE file is present.
 
 ---
-
-**Built with love for open engineering and people.**
+**Built with care for engineering, clarity and people.**
