@@ -40,3 +40,8 @@
 
 ---
 **Створено з любов'ю до інженерії, системності та людей.**
+
+
+## Майбутній GUI та внесок
+
+Fragile-Baby залишається архітектурною пропозицією; GUI або підтримку Elbrus/E2K не заявлено без реалізації та target-доказів. Вимоги до майбутнього host-інструмента й відображення доказів: [GUI Design Standard](docs/gui/GUI_DESIGN_STANDARD.md). Шаблон PR: [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
