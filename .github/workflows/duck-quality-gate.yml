@@ -17,3 +17,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate repository contract
         run: python3 .github/scripts/duck_quality_gate.py
+      - name: Test E2K evidence advisor
+        run: python3 -m unittest discover -s tests -v
