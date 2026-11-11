@@ -14,9 +14,8 @@
 - Явні capability gates і межі платформного порту.
 
 ## Швидкий старт і перевірка
-```bash
-Перевірте специфікації й qualification documents; target build вимагає конкретного toolchain та обладнання.
-```
+
+Цей репозиторій описує напрям кваліфікації Elbrus/E2K, а не готову target-збірку. Перевіряйте toolchain, linker layout, image format і вимоги до плати. Target build можливий лише після підтвердження конкретного toolchain та доступності обладнання.
 
 ## Архітектура, межі та достовірність
 Перевіреної E2K target-реалізації, boot path або hardware qualification наразі немає. Host-тести не доводять сумісність Elbrus; параметри не виводяться з інших ISA.
