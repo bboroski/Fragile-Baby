@@ -6,6 +6,14 @@
 
 > **Fragile-Baby** — Fragile-Baby — окремий інженерний напрям для дослідження Elbrus/E2K та підготовки перевірюваної кваліфікації платформи.
 
+
+## NEON SYNDICATE — візуальна система
+
+<p align="center"><img src="assets/neon-syndicate/overview.svg" alt="Fragile-Baby — NEON SYNDICATE vector visual" width="1200"></p>
+<p align="center"><em>Векторна схема 1920×1200: E2K QUALIFICATION / TARGET EVIDENCE PENDING. Це концепція/архітектурна візуалізація, а не скриншот працюючої системи.</em></p>
+
+[Брендбук](design/NEON_SYNDICATE.md) · [Токени](design/neon-syndicate.tokens.json)
+
 ## Поточні можливості
 - CPU/SoC, stepping та ABI identity profile.
 - Toolchain, linker layout, image format і memory-map requirements.
@@ -33,7 +41,7 @@
 Репозиторії зберігають власні назви, код, API, цикли випуску та межі відповідальності. Інтеграція означає узгоджені контракти, а не автоматичне злиття незалежних runtime.
 
 ## Дизайн і документація
-Базовий інтерфейсний напрям екосистеми — **Duck Black / Yellow**: чорні поверхні, жовтий акцент для дій і станів, читабельна типографіка, доступний контраст, клавіатурна навігація та підтримка reduced motion. Деталі дивіться в [design/DUCK_UI_SYSTEM.md](design/DUCK_UI_SYSTEM.md), якщо файл присутній у цьому репозиторії.
+Базовий інтерфейсний напрям екосистеми — **NEON SYNDICATE**: чорні поверхні, жовтий акцент для дій і станів, читабельна типографіка, доступний контраст, клавіатурна навігація та підтримка reduced motion. Деталі дивіться в [design/NEON_SYNDICATE.md](design/NEON_SYNDICATE.md), якщо файл присутній у цьому репозиторії.
 
 ## Ліцензія
 Ліцензію не оголошено; файл LICENSE відсутній.
