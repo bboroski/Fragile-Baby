@@ -1,8 +1,8 @@
 # Production Release Standard
 
-**Repository:** bboroski/Fragile-Baby  
-**Default branch:** `main`  
-**Project profile:** Contract/documentation-focused repository with tests; no root CMake/pyproject/package manifest was present in the root inventory  
+**Repository:** bboroski/Fragile-Baby
+**Default branch:** `main`
+**Project profile:** Contract/documentation-focused repository with tests; no root CMake/pyproject/package manifest was present in the root inventory
 **Existing workflow inventory:** 7 workflow file(s) were visible at the time this baseline was prepared.
 
 ## Purpose and scope
