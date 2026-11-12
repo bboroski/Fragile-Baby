@@ -1,0 +1,27 @@
+{
+  "schema_version": "fragile-baby.target-profile.v1",
+  "target_id": "elbrus-profile-unqualified",
+  "architecture": "elbrus",
+  "variant": "not-selected",
+  "target": {
+    "cpu_model": null,
+    "board": null
+  },
+  "toolchain": {
+    "compiler": null,
+    "version": null,
+    "target_triple": null,
+    "sysroot": null
+  },
+  "abi": {
+    "pointer_width_bits": null,
+    "endianness": null,
+    "calling_convention": null,
+    "stack_alignment_bytes": null
+  },
+  "features": [],
+  "qualification": {
+    "level": "profile_only",
+    "evidence": []
+  }
+}
