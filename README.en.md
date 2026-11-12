@@ -13,9 +13,8 @@
 - Host, cross-build, emulator and physical-target evidence matrix.
 
 ## Quick start and verification
-```bash
-Review the specifications and qualification documents; a target build requires a concrete toolchain and hardware.
-```
+
+This repository documents an Elbrus/E2K qualification workstream, not a ready target build. Review the toolchain, linker layout, image format and board requirements. A target build is possible only after the concrete toolchain and hardware are confirmed.
 
 ## Architecture and verified scope
 No verified E2K target implementation, boot path or hardware qualification is present. Host tests do not prove Elbrus compatibility; platform parameters must not be inferred from another ISA.
@@ -32,7 +31,7 @@ No verified E2K target implementation, boot path or hardware qualification is pr
 Each repository retains its canonical name, code, APIs, release lifecycle and ownership boundaries. Integration means versioned contracts, not automatic merging of independent runtimes.
 
 ## Design and documentation
-The shared interface direction is **Duck Black / Yellow**: dark surfaces, yellow accents for actions and state, readable typography, accessible contrast, keyboard navigation and reduced-motion support. See [design/DUCK_UI_SYSTEM.md](design/DUCK_UI_SYSTEM.md) when present.
+The shared interface direction is **Duck Black / Yellow**: near-black surfaces `#111111`, warning-yellow accents `#FFD600`, readable typography, accessible contrast, keyboard navigation and reduced-motion support. See [design/DUCK_UI_SYSTEM.md](design/DUCK_UI_SYSTEM.md) when present.
 
 ## License
 License not declared; no LICENSE file is present.
