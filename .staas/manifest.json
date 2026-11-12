@@ -1,0 +1,37 @@
+{
+  "$schema": "https://github.com/bboroski/Hellduck/blob/main/apps/staas/schemas/repository-manifest.schema.json",
+  "schema_version": "staas.repository.v1",
+  "repository": {
+    "id": "fragile-baby",
+    "name": "Fragile-Baby",
+    "full_name": "bboroski/Fragile-Baby",
+    "role": "Elbrus/E2K architecture and platform qualification research",
+    "runtime": [
+      "Python",
+      "Markdown"
+    ],
+    "maturity": "research"
+  },
+  "protocol": {
+    "id": "staas.cross-repository.v1",
+    "version": "1.0.0"
+  },
+  "capabilities": {
+    "discovery": true,
+    "health_checks": true,
+    "reconciliation_plan": true,
+    "automatic_deployment": false
+  },
+  "policy": {
+    "secret_storage": "os-keyring",
+    "execute_repository_code": false,
+    "write_without_approval": false,
+    "export_secrets": false
+  },
+  "providers": [],
+  "tags": [
+    "saas-integration",
+    "metadata-first",
+    "platform-research"
+  ]
+}
