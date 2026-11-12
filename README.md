@@ -6,6 +6,8 @@
 
 > **Fragile-Baby** — Fragile-Baby — окремий інженерний напрям для дослідження Elbrus/E2K та підготовки перевірюваної кваліфікації платформи.
 
+<sub>Оновлено: 2026-11-12</sub>
+
 ## Поточні можливості
 - CPU/SoC, stepping та ABI identity profile.
 - Toolchain, linker layout, image format і memory-map requirements.
@@ -35,6 +37,12 @@
 Ліцензію не оголошено; файл LICENSE відсутній.
 
 ---
+
+## Статус інтеграцій
+
+- Репозиторій зберігає власні API, збірку, тести та цикл випуску; міжпроєктна взаємодія відбувається через явні версіоновані контракти.
+- STaas (SaaS integration control plane) і MoonTreach (CI/test acceleration) розвиваються окремими Pull Requests. Їх не слід вважати можливостями `main` або production-ready до злиття та проходження обов'язкових перевірок.
+- Правила федерації та інтеграції: [Hellduck Integration Playbook](https://github.com/bboroski/Hellduck/blob/main/docs/INTEGRATION_PLAYBOOK.md).
 
 ## Інженерний стандарт
 Індекс аудиту, тестових воріт, безпеки, супроводу та критеріїв інтеграції: [Engineering Improvement Index](docs/ENGINEERING_IMPROVEMENT_INDEX.md).
