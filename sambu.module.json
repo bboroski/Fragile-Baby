@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "ecosystem": "SAMBU",
+  "module_id": "fragile-baby-e2k-qualification",
+  "repository": "bboroski/Fragile-Baby",
+  "display_name": "Fragile-Baby",
+  "role": "elbrus-e2k-architecture-and-platform-qualification-workstream",
+  "runtime": [
+    "Host-side Python evidence tooling",
+    "Elbrus/E2K target toolchain (not yet qualified)"
+  ],
+  "maturity": "architecture-proposal-target-evidence-pending",
+  "provides": [
+    "e2k-platform-qualification-evidence-v1"
+  ],
+  "consumes": [
+    "exact-cpu-stepping-and-abi-profile",
+    "vendor-toolchain-and-target-evidence"
+  ],
+  "dependencies": [],
+  "boundaries": [
+    "No verified E2K target implementation, boot path, or hardware qualification is claimed.",
+    "Host tests do not prove Elbrus compatibility.",
+    "ISA, ABI, memory model, and toolchain assumptions must come from exact target evidence."
+  ],
+  "verification": {
+    "host_tests": "Run python tools/evidence_advisor.py and repository contract tests.",
+    "target_validation": "Blocked pending exact Elbrus hardware, compiler, linker, and target-runner evidence.",
+    "evidence": [
+      "README.md",
+      "docs/EVIDENCE_ADVISOR.md",
+      "tools/evidence_advisor.py"
+    ]
+  }
+}
