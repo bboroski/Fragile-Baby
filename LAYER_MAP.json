@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "architecture": "NUN Mesh Multi-Axis Layer Fabric (MALF)",
+  "repository": "bboroski/Fragile-Baby",
+  "role": "Elbrus/E2K architecture research and platform qualification workstream",
+  "maturity": "Architecture proposal with qualification evidence pending; no verified E2K target implementation implied.",
+  "layers": [
+    {
+      "id": "L0",
+      "name": "Experience",
+      "responsibility": "CLI, portal, UI and operator workflows."
+    },
+    {
+      "id": "L1",
+      "name": "Contracts",
+      "responsibility": "Versioned manifests, schemas, APIs, ABI and evidence formats."
+    },
+    {
+      "id": "L2",
+      "name": "Application orchestration",
+      "responsibility": "Commands, qualification workflows and integration journeys."
+    },
+    {
+      "id": "L3",
+      "name": "Domain kernel",
+      "responsibility": "Domain models, classification, constraints and deterministic calculations."
+    },
+    {
+      "id": "L4",
+      "name": "Policy and capabilities",
+      "responsibility": "Trust, risk gates, maturity thresholds and permitted operations."
+    },
+    {
+      "id": "L5",
+      "name": "Ports",
+      "responsibility": "Abstract compiler, platform, filesystem, registry and evidence interfaces."
+    },
+    {
+      "id": "L6",
+      "name": "Adapters",
+      "responsibility": "Concrete ISA/toolchain/OS/repository and external-source implementations."
+    },
+    {
+      "id": "L7",
+      "name": "Data and evidence",
+      "responsibility": "Registries, matrices, artifacts, reports, provenance and persistent state."
+    },
+    {
+      "id": "L8",
+      "name": "Runtime and delivery",
+      "responsibility": "Build, CLI packaging, environment composition and publication."
+    },
+    {
+      "id": "L9",
+      "name": "Assurance",
+      "responsibility": "Unit/schema tests, target matrix, qualification and reproducible evidence."
+    }
+  ],
+  "placement": [
+    {
+      "layer": "L0",
+      "area": "Qualification operator surface",
+      "components": [
+        "evidence advisor CLI",
+        "qualification matrix"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L1",
+      "area": "Platform identity and evidence contracts",
+      "components": [
+        "platform identity manifest",
+        "toolchain manifest",
+        "evidence schema"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L2",
+      "area": "Qualification orchestration",
+      "components": [
+        "evidence workflow",
+        "stage progression",
+        "qualification reports"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L3",
+      "area": "ISA and platform domain",
+      "components": [
+        "ISA model",
+        "ABI model",
+        "board profile"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L4",
+      "area": "Evidence maturity policy",
+      "components": [
+        "maturity gates",
+        "default-unknown policy",
+        "risk classification"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L5",
+      "area": "Toolchain and evidence ports",
+      "components": [
+        "toolchain port",
+        "runner port",
+        "evidence sink"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L6",
+      "area": "E2K-specific adapters",
+      "components": [
+        "E2K toolchain adapter",
+        "emulator adapter",
+        "hardware adapter"
+      ],
+      "status": "planned"
+    },
+    {
+      "layer": "L7",
+      "area": "Qualification evidence state",
+      "components": [
+        "platform profiles",
+        "evidence matrix",
+        "build artifacts"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L8",
+      "area": "Research and build environment",
+      "components": [
+        "Python tools",
+        "CI workflows",
+        "toolchain environment"
+      ],
+      "status": "proposed-layer-mapping"
+    },
+    {
+      "layer": "L9",
+      "area": "Multi-stage qualification",
+      "components": [
+        "host tests",
+        "cross-build",
+        "emulator tests",
+        "target qualification"
+      ],
+      "status": "proposed-layer-mapping"
+    }
+  ],
+  "vertical_slices": [
+    {
+      "id": "slice-1",
+      "title": "Target identity",
+      "flow": "CPU/SoC + stepping + board + ABI identity → schema validation → supported/unknown classification → evidence record."
+    },
+    {
+      "id": "slice-2",
+      "title": "Cross-build qualification",
+      "flow": "Pinned E2K toolchain → compiler/linker check → reproducible artifact → static inspection → explicit pass/block report."
+    },
+    {
+      "id": "slice-3",
+      "title": "Physical target qualification",
+      "flow": "Exact hardware identity → approved test procedure → captured measurements/logs → independent review → qualified scope."
+    }
+  ],
+  "dependency_rules": [
+    "input-and-source-identity-validated-before-processing",
+    "application-orchestration-uses-domain-policy-and-ports",
+    "external-platforms-contained-in-adapters",
+    "evidence-persists-input-and-toolchain-provenance",
+    "host-emulator-and-target-evidence-separated",
+    "cross-repository-integration-requires-versioned-contract"
+  ],
+  "cross_cutting": [
+    "evidence-provenance",
+    "security-and-trust",
+    "resilience-and-unknown-states",
+    "compatibility-and-versioning",
+    "reproducibility",
+    "accessibility-where-applicable"
+  ],
+  "guardrails": "Do not claim an E2K kernel, bare-metal boot path, production runtime or hardware compatibility until exact target source and reproducible evidence exist. Never infer E2K register, ABI, memory or toolchain behavior from x86/Arm. Host tests prove only host logic.",
+  "status_note": "Architecture contract only; target support requires actual source implementation and reproducible evidence."
+}
