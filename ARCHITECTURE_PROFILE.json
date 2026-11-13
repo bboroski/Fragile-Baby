@@ -1,0 +1,98 @@
+{
+  "schema_version": "bboroski.modular-monolith-profile.v1",
+  "project": "Fragile-Baby",
+  "maturity": "architecture-proposal",
+  "architecture": {
+    "mode": "research-workstream",
+    "scope": "Elbrus/E2K platform research, CPU/toolchain identity tracking and evidence-matrix advisory.",
+    "runtime_boundary": "Offline host-side research tools; target claims require toolchain, emulator or physical hardware evidence.",
+    "composition_rule": "Compose evidence records and qualification stages as data; target-specific probes must be independently implemented, reviewed and verified."
+  },
+  "entrypoints": [
+    {
+      "path": "tools/evidence_advisor.py",
+      "kind": "offline-evidence-cli"
+    }
+  ],
+  "components": [
+    {
+      "id": "e2k-identity-profile",
+      "responsibility": "Track CPU model, stepping, board revision and toolchain identity.",
+      "status": "specified",
+      "integration": "metadata-only"
+    },
+    {
+      "id": "evidence-matrix",
+      "responsibility": "Represent host, cross-build, emulator and physical-target evidence.",
+      "status": "implemented",
+      "integration": "in-process"
+    },
+    {
+      "id": "maturity-advisor",
+      "responsibility": "Report coverage and next evidence stage without probing hardware.",
+      "status": "implemented",
+      "integration": "in-process"
+    },
+    {
+      "id": "target-qualification",
+      "responsibility": "Physical E2K boot and hardware qualification.",
+      "status": "planned",
+      "integration": "isolated-target"
+    }
+  ],
+  "dependencies": [
+    {
+      "project": "NUN",
+      "relationship": "kernel/platform qualification target reference",
+      "runtime_dependency": false
+    },
+    {
+      "project": "NUNLauncher",
+      "relationship": "image admission contract reference",
+      "runtime_dependency": false
+    },
+    {
+      "project": "Kloz",
+      "relationship": "platform ABI reference",
+      "runtime_dependency": false
+    }
+  ],
+  "preserved_boundaries": [
+    "Host evidence, cross-build, emulator and physical-target evidence are distinct.",
+    "The advisor does not probe hardware or infer CPU identity.",
+    "E2K-specific behavior is not inferred from x86, Arm or RISC-V."
+  ],
+  "forbidden_composition": [
+    "No claim of completed E2K native implementation without target evidence.",
+    "No host test presented as hardware qualification.",
+    "No fabricated compiler, stepping or board capability values."
+  ],
+  "build_profiles": [
+    {
+      "id": "offline-advisor",
+      "status": "declared",
+      "commands": [
+        "python -m unittest discover -s tests -v",
+        "python tools/evidence_advisor.py --help"
+      ],
+      "evidence": [
+        "tools/evidence_advisor.py",
+        "tests/test_evidence_advisor.py",
+        "docs/qualification/e2k-evidence-matrix.schema.json"
+      ]
+    },
+    {
+      "id": "e2k-target",
+      "status": "blocked",
+      "commands": [],
+      "evidence": [
+        "docs/qualification/e2k-evidence-matrix.md",
+        "docs/qualification/e2k-evidence-matrix.example.json"
+      ]
+    }
+  ],
+  "gaps": [
+    "Collect target compiler/version and CPU/board identity from real E2K systems.",
+    "Attach reproducible cross-build, emulator and physical-target logs before advancing maturity."
+  ]
+}
