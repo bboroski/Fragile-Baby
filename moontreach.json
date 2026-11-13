@@ -1,0 +1,37 @@
+{
+  "schema_version": "moontreach.repository.v1",
+  "repository": "bboroski/Fragile-Baby",
+  "always_run": [
+    "evidence-advisor"
+  ],
+  "fallback_on_unmapped": true,
+  "full_suite_on_merge_group": true,
+  "max_changed_files": 250,
+  "commands": {
+    "evidence-advisor": {
+      "argv": [
+        "python3",
+        "tools/evidence_advisor.py"
+      ],
+      "timeout_seconds": 600
+    }
+  },
+  "rules": [
+    {
+      "id": "qualification-evidence",
+      "paths": [
+        "**/*.py",
+        "**/*.json",
+        "**/*.md",
+        "**/*.yml",
+        "**/*.yaml"
+      ],
+      "checks": [
+        "evidence-advisor"
+      ]
+    }
+  ],
+  "fallback_checks": [
+    "evidence-advisor"
+  ]
+}
