@@ -41,7 +41,7 @@ jobs:
         run: python -m compileall -q tools
       - name: Run evidence and E2K audit tests
         run: |
-          python -m unittest tests.test_evidence_advisor tests.test_e2k_tuning_probe -v
+          python -m unittest discover -s tests -v
       - name: Validate tuning profile JSON
         run: |
           python -m json.tool profiles/e2k-tuning-profiles.json > /dev/null
@@ -64,9 +64,6 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - name: Verify E2K Linux and LCC availability
         run: |
           test "$(uname -m)" = "e2k"
