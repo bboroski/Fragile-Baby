@@ -25,6 +25,17 @@
 
 `python3 tools/evidence_advisor.py` перевіряє матрицю E2K, показує послідовне покриття та наступну стадію без підміни host-перевірок апаратною кваліфікацією. Документація: [E2K evidence advisor](docs/EVIDENCE_ADVISOR.md).
 
+## Глобальний протокол оптимізації Elbrus / E2K
+
+Новий інженерний стандарт: [ELBRUS_GLOBAL_TUNING_PROTOCOL.md](docs/ELBRUS_GLOBAL_TUNING_PROTOCOL.md). Він поєднує E2K-профілі компілятора, VLIW/memory/vector tuning, benchmarking, qualification stages і зв'язки з NUN, NUNLauncher, ReaperCripple, SAMBU та Hellduck.
+
+- Tuning profiles: [profiles/e2k-tuning-profiles.json](profiles/e2k-tuning-profiles.json)
+- Read-only аудит CPU/OS/LCC/ELF: `python3 tools/e2k_tuning_probe.py --json`
+- Перевірка прийняття конкретного LCC-флага: `python3 tools/e2k_tuning_probe.py --check-flag=-O3 --json`
+- Host CI запускається для контрактів; native E2K перевірка доступна вручну на self-hosted runner з мітками `linux,e2k`.
+
+Аудитор не змінює частоти, напругу, firmware або регістри. `uname -m=e2k` є спостереженням, а не самостійним доказом фізичної кваліфікації.
+
 ## Інженерна якість
 - Перевіряйте збірку й тести саме для цільової платформи; host CI не замінює hardware qualification.
 - Статуси **implemented**, **partial**, **planned** мають підтверджуватися кодом, тестами та документацією.
