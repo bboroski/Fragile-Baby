@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "standard_id": "PERSONA-ENG-STD",
+  "repository": "bboroski/Fragile-Baby",
+  "project": {
+    "domain": "Elbrus/E2K architecture research and platform qualification workstream",
+    "mission": "Maintain explicit CPU/SoC identity, ABI, toolchain, linker, image-format, and target-evidence requirements for a possible E2K platform port.",
+    "maturity": "architecture-proposal-target-evidence-pending"
+  },
+  "architecture": {
+    "preserve_existing_boundaries": true,
+    "primary_technologies": [
+      "Elbrus/E2K identity and ABI profiles",
+      "toolchain and linker-layout requirements",
+      "versioned platform evidence manifests",
+      "host/cross-build/emulator/physical-target qualification stages"
+    ],
+    "explicit_non_goals": [
+      "No verified E2K target implementation is claimed",
+      "No boot path or physical hardware qualification is claimed",
+      "Do not infer E2K properties from another ISA",
+      "Host tests cannot substitute for a native E2K runner"
+    ]
+  },
+  "safety_boundaries": [
+    "Keep architecture research separate from implementation claims.",
+    "Record source and version for all CPU, ABI, compiler, and platform assumptions.",
+    "Do not mark target support verified without native or physical-target evidence appropriate to the claim.",
+    "Treat the evidence advisor as a planning aid, not proof of qualification."
+  ],
+  "native_validation": {
+    "status": "target-evidence-pending",
+    "commands": [],
+    "evidence_note": "README documents an evidence advisor; no verified project-wide build/test command or target result is asserted by this profile."
+  },
+  "required_gates": [
+    "profile-validation",
+    "native-project-checks",
+    "architecture-and-compatibility-review",
+    "security-and-privacy-review",
+    "documentation-review",
+    "human-review",
+    "target-qualification-when-applicable"
+  ],
+  "merge_policy": {
+    "pull_request_required": true,
+    "direct_main_push_policy": "enforce-with-branch-rules",
+    "bypass_required_checks": false,
+    "release_requires_separate_qualification": true
+  },
+  "status_vocabulary": [
+    "PROPOSED",
+    "PLANNED",
+    "IMPLEMENTED",
+    "TESTED",
+    "VERIFIED",
+    "MERGED",
+    "RELEASED",
+    "BLOCKED"
+  ]
+}
