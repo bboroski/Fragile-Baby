@@ -24,7 +24,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: e2k-audit-\${{ github.ref }}
+  group: e2k-audit-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -67,6 +67,7 @@ jobs:
       - name: Verify E2K Linux and LCC availability
         run: |
           test "$(uname -m)" = "e2k"
+          command -v python3
           command -v lcc
           lcc --version
       - name: Run target identity and compiler acceptance audit
