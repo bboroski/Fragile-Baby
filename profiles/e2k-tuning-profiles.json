@@ -1,0 +1,49 @@
+{
+  "schema_version": "fragile-baby.e2k-tuning.v1",
+  "architecture": "E2K",
+  "compiler": {
+    "family": "MCST LCC",
+    "baseline_option": "-O3",
+    "levels": ["-O0", "-O1", "-O2", "-O3", "-O4"],
+    "version_must_be_recorded": true,
+    "cross_compiler_may_run_on": "x86_64-linux",
+    "target_sysroot_must_be_recorded": true
+  },
+  "profiles": {
+    "debug": {"flags": ["-O0", "-g"], "risk": "low", "purpose": "Debug symbols and source-to-machine-code inspection"},
+    "conservative": {"flags": ["-O2"], "risk": "low", "purpose": "Moderately optimized comparison build"},
+    "baseline": {"flags": ["-O3"], "risk": "low", "purpose": "Default performance comparison point"},
+    "aggressive": {"flags": ["-O4"], "risk": "experimental", "purpose": "Compare against -O3; may improve or regress"},
+    "prefetch": {"flags": ["-O3", "-fprefetch"], "risk": "experimental", "purpose": "Measure regular loop and streaming workloads"},
+    "cache-opt": {"flags": ["-O3", "-fcache-opt"], "risk": "experimental", "purpose": "Measure pipelined-loop cache/blocking transformations"},
+    "no-apb-control": {"flags": ["-O3", "-fno-apb"], "risk": "experimental", "purpose": "Control run to measure APB contribution"},
+    "aligned-diagnostic": {"flags": ["-O3", "-faligned-check"], "risk": "diagnostic", "purpose": "Detect misaligned accesses during target testing"},
+    "aligned-assumption": {
+      "flags": ["-O3", "-faligned"],
+      "risk": "high",
+      "requires": ["Proven alignment invariant", "Runtime assertions or equivalent test evidence", "Target tests with no alignment faults"],
+      "purpose": "Allow alignment-dependent compiler optimization only after proof"
+    },
+    "fast-math": {
+      "flags": ["-O3", "-ffast"],
+      "risk": "high",
+      "requires": ["Numerical error budget", "NaN/Inf/signed-zero/rounding tests", "Alignment proof", "Target benchmark and independent review"],
+      "purpose": "Numerically relaxed experiment; never default"
+    },
+    "pgo-generate": {"flags": ["-O3", "-fprofile-generate"], "risk": "experimental", "purpose": "Collect representative profile data with matching toolchain"},
+    "pgo-values": {"flags": ["-O3", "-fprofile-generate", "-fprofile-values"], "risk": "experimental", "purpose": "Collect procedure-pointer value profiles when supported"}
+  },
+  "policy": {
+    "probe_every_flag_with_installed_compiler": true,
+    "flag_acceptance_is_not_performance_evidence": true,
+    "flag_acceptance_is_not_correctness_evidence": true,
+    "unknown_flags_are_rejected_by_the_audit_tool": true,
+    "no_implicit_cpu_model_or_isa_fallback": true,
+    "no_automatic_frequency_voltage_firmware_or_register_writes": true
+  },
+  "source_references": [
+    "https://dev.mcst.ru/book/chapter1.html",
+    "https://dev.mcst.ru/book/chapter6.html",
+    "https://dev.mcst.ru/wp-content/uploads/2024/05/elbrus-prog-1.2_2024-02-28.pdf"
+  ]
+}
