@@ -1,0 +1,87 @@
+name: Elbrus E2K audit and qualification
+
+on:
+  pull_request:
+    paths:
+      - "tools/e2k_tuning_probe.py"
+      - "tests/**"
+      - "profiles/**"
+      - "docs/qualification/**"
+      - "docs/ELBRUS_GLOBAL_TUNING_PROTOCOL.md"
+      - ".github/workflows/e2k-audit.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/e2k_tuning_probe.py"
+      - "tests/**"
+      - "profiles/**"
+      - "docs/qualification/**"
+      - "docs/ELBRUS_GLOBAL_TUNING_PROTOCOL.md"
+      - ".github/workflows/e2k-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2k-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  host-contracts:
+    name: Host-side audit contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile audit tooling
+        run: python -m compileall -q tools
+      - name: Run evidence and E2K audit tests
+        run: |
+          python -m unittest discover -s tests -v
+      - name: Validate tuning profile JSON
+        run: |
+          python -m json.tool profiles/e2k-tuning-profiles.json > /dev/null
+      - name: Run evidence advisor
+        run: python tools/evidence_advisor.py
+      - name: Run read-only host probe
+        run: python tools/e2k_tuning_probe.py --json > e2k-host-audit.json
+      - name: Upload host audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2k-host-audit
+          path: e2k-host-audit.json
+          if-no-files-found: error
+          retention-days: 30
+
+  native-e2k:
+    name: Native E2K runner audit
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: [self-hosted, linux, e2k]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify E2K Linux and LCC availability
+        run: |
+          test "$(uname -m)" = "e2k"
+          command -v python3
+          command -v lcc
+          lcc --version
+      - name: Run target identity and compiler acceptance audit
+        run: |
+          mkdir -p artifacts
+          python tools/e2k_tuning_probe.py \
+            --require-native \
+            --check-flag=-O3 \
+            --json \
+            --output artifacts/e2k-native-audit.json
+      - name: Upload native runner evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2k-native-runner-audit
+          path: artifacts/e2k-native-audit.json
+          if-no-files-found: error
+          retention-days: 90
