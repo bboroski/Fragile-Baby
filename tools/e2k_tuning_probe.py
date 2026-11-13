@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 ALLOWED_LCC_FLAGS = {
-    "-O0", "-O1", "-O2", "-O3", "-O4",
+    "-O0", "-O1", "-O2", "-O3", "-O4", "-g",
     "-fprefetch", "-fcache-opt", "-fno-apb",
     "-faligned", "-faligned-check", "-ffast",
     "-fprofile-generate", "-fprofile-values",
