@@ -1,0 +1,18 @@
+{
+  "schema_version": "jm.adapter-contracts.v1",
+  "repository": "bboroski/Fragile-Baby",
+  "module_id": "fragile-baby-e2k-qualification",
+  "contracts": [
+    {
+      "id": "e2k-platform-evidence-v1",
+      "kind": "platform-qualification-evidence",
+      "status": "specified",
+      "contract_version": "1",
+      "local_paths": [
+        "docs/EVIDENCE_ADVISOR.md",
+        "tools/evidence_advisor.py"
+      ],
+      "notes": "Evidence workflow only. No E2K target compiler, boot path, or hardware qualification is claimed."
+    }
+  ]
+}
